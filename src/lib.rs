@@ -2,8 +2,8 @@ use std::iter::Peekable;
 use std::str::Chars;
 
 pub type CSV = Vec<CSVRecord>;
-type CSVRecord = Vec<CSVField>;
-type CSVField = String;
+pub type CSVRecord = Vec<CSVField>;
+pub type CSVField = String;
 
 const COMMA: char = '\u{002C}';
 const DQUOTE: char = '\u{0022}';
