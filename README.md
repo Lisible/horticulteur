@@ -1,6 +1,6 @@
 # Horticulteur
 
-Horticulteur is a simple CSV parser that is made to be RFC4180 compliant.
+Horticulteur is a simple CSV parser that is made to be RFC4180-compliant.
 
 ## How to use
 
