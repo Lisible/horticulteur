@@ -15,6 +15,10 @@ pub enum Error {
     ParseError(String),
 }
 
+/// Parses a CSV
+///
+/// Returns [`Result<CSV,Error>::Ok`] if the CSV was parsed successfully,
+/// [`Result<CSV, Error>::Err`] if a parse error occurred
 pub fn parse_csv(input_csv: &str) -> Result<CSV, Error> {
     let csv_string = input_csv.trim();
     let mut csv_iterator = csv_string.chars().peekable();
