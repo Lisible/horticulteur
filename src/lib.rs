@@ -36,7 +36,10 @@ const LF: char = '\n';
 
 #[derive(Debug)]
 pub enum Error {
-    ParseError(String),
+    UnexpectedCharacterInEscapedField(char),
+    UnexpectedCharacterInNonEscapedField(char),
+    UnexpectedEndOfInput,
+    AteWrongCharacter(char, char),
 }
 
 /// Parses a CSV
@@ -106,10 +109,7 @@ fn parse_non_escaped_field(csv_iterator: &mut Peekable<Chars>) -> Result<CSVFiel
         } else if *character == CR {
             break;
         } else {
-            return Err(Error::ParseError(format!(
-                "Unexpected {} in non-escaped field",
-                character
-            )));
+            return Err(Error::UnexpectedCharacterInNonEscapedField(*character));
         }
     }
 
@@ -121,16 +121,10 @@ fn eat(character: char, character_iterator: &mut Peekable<Chars>) -> Result<(), 
         if c == character {
             Ok(())
         } else {
-            Err(Error::ParseError(format!(
-                "Expected {}, found {}",
-                character, c
-            )))
+            Err(Error::AteWrongCharacter(character, c))
         }
     } else {
-        Err(Error::ParseError(format!(
-            "Expected Some({}), found None",
-            character
-        )))
+        Err(Error::UnexpectedEndOfInput)
     }
 }
 
