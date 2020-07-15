@@ -2,7 +2,7 @@
 name = "horticulteur"
 description = "A RFC4180-compliant CSV parsing library"
 license = "MIT"
-version = "1.0.0"
+version = "1.1.0"
 authors = ["Clément Sibille <clement.sibille@protonmail.com>"]
 edition = "2018"
 
