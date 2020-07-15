@@ -29,8 +29,8 @@ pub type CSV = Vec<CSVRecord>;
 pub type CSVRecord = Vec<CSVField>;
 pub type CSVField = String;
 
-const COMMA: char = '\u{002C}';
-const DQUOTE: char = '\u{0022}';
+const COMMA: char = ',';
+const DQUOTE: char = '"';
 const CR: char = '\r';
 const LF: char = '\n';
 
