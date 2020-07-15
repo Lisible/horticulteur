@@ -22,6 +22,13 @@
  * SOFTWARE.
  */
 
+//! CSV Parser.
+//!
+//! This module exposes a CSV parser.
+//! CSV stands for Comma-separated values, this file format allows to represent
+//! tabular data into a text file. This CSV parser is made to be
+//! RFC4180-compliant.
+
 use std::iter::Peekable;
 use std::str::Chars;
 
@@ -43,9 +50,6 @@ pub enum Error {
 }
 
 /// Parses a CSV
-///
-/// Returns [`Result<CSV,Error>::Ok`] if the CSV was parsed successfully,
-/// [`Result<CSV, Error>::Err`] if a parse error occurred
 pub fn parse_csv(input_csv: &str) -> Result<CSV, Error> {
     let csv_string = input_csv.trim();
     let mut csv_iterator = csv_string.chars().peekable();
